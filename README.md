@@ -4,6 +4,14 @@
 
 ## Helm Commands
 
+To list the version of helm you're running
+
+    helm version --short
+
+To list helm environment variables
+
+    helm env
+
 To search for anything on `helm`, you need to have at least on repository. None are set up by default. Let's add the official stable repository.
 
 *Note: this has been deprecated, use [ArtifactHUB](https://artifacthub.io/) instead.*
@@ -110,6 +118,10 @@ To create a helm chart of your own
 
     helm create ourchart
 
+To render locally render the k8s files and see what they would look like
+
+    helm template ourchart
+
 To deploy (install) this chart
 
     helm install ourchart ./ourchart
@@ -131,7 +143,7 @@ Now let's push our packaged chart to a helm repository. We can deploy [ChartMuse
     helm install chartmuseum stable/chartmuseum --set env.open.DISABLE_API=false
 
 This will spit out some notes telling us our to open the port to allow pushing packaged charts
-  
+
     export POD_NAME=$(kubectl get pods --namespace default -l "app=chartmuseum" -l "release=chartmuseum" -o jsonpath="{.items[0].metadata.name}")
     echo http://127.0.0.1:8080/
     kubectl port-forward $POD_NAME 8080:8080 --namespace default
