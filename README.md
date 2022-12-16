@@ -62,6 +62,10 @@ To upgrade a release
 
     helm upgrade mysql stable/mysql --version 1.6.4
 
+To upgrade or install (great for scripts)
+
+    helm upgrade --install mysql stable/mysql --version 1.6.4
+
 To rollback a release to a specific revision number
 
     helm rollback mysql 1
