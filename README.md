@@ -122,7 +122,7 @@ To create a helm chart of your own
 
     helm create ourchart
 
-To render locally render the k8s files and see what they would look like
+To locally render the k8s yaml files and see what they would look like
 
     helm template ourchart
 
